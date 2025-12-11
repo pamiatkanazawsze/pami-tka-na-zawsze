@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Twoja Marka — Biżuteria z pamiątkami</title>
+  <meta name="description" content="Zawieszki, pierścionki i breloki z żywicy — personalizacja: literka, prochy, włosy, kwiaty suszone lub sztuczne." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="logo" href="#">Twoja Marka</a>
+      <nav class="nav">
+        <a href="#shop">Sklep</a>
+        <a href="#about">O mnie</a>
+        <a href="#contact">Kontakt</a>
+      </nav>
+      <div class="header-actions">
+        <button id="adminToggle" class="btn small ghost">Panel kwiatów</button>
+        <button id="cartBtn" class="btn small">Szybkie zamówienie</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div class="hero-left">
+        <h1>Twoje wspomnienia — zawsze przy Tobie</h1>
+        <p>Ręcznie robione zawieszki, pierścionki i breloki — zatapiam włos, futro, prochy, suszone kwiaty albo sztuczne dekoracje. Wybierz literkę, materiał i rodzaj kwiatów — wszystko prosto i czytelnie.</p>
+        <div class="cta-row">
+          <a href="#shop" class="btn">Zobacz kolekcję</a>
+          <button id="howBtn" class="btn ghost">Jak zamówić?</button>
+        </div>
+      </div>
+      <div class="hero-right" aria-hidden="true">
+        <img src="placeholder-hero.jpg" alt="Przykład biżuterii" />
+      </div>
+    </section>
+
+    <section id="promo" class="promo wrap">
+      <p><strong id="promoText">Promocja — zawieszki 40 zł do 31.12</strong></p>
+    </section>
+
+    <section id="shop" class="wrap shop-section">
+      <div class="section-header">
+        <h2>Nasze prace</h2>
+        <div class="controls">
+          <select id="filterType">
+            <option value="all">Wszystkie</option>
+            <option value="zawieszka">Zawieszki</option>
+            <option value="pierscionek">Pierścionki</option>
+            <option value="brelok">Breloki</option>
+          </select>
+          <input id="search" placeholder="Szukaj (np. mamba, logan)" />
+        </div>
+      </div>
+
+      <div id="productsGrid" class="grid">
+        <!-- produkty wypełnia script.js -->
+      </div>
+    </section>
+
+    <section id="about" class="wrap about">
+      <h2>O mnie</h2>
+      <p>Cześć — robię biżuterię z pamiątkami. Każdy kawałek jest ręcznie dopracowany tak, żeby był trwałą pamiątką. W wiadomości napisz: typ (zawieszka/pierścionek/brelok), ramka (złoto/srebro), co zatapiamy i czy chcesz literkę.</p>
+    </section>
+
+    <section id="contact" class="wrap contact">
+      <h2>Kontakt</h2>
+      <div class="contact-grid">
+        <div>
+          <h3>Email</h3>
+          <p><a id="contactEmail" href="mailto:twojemail@domena.pl">twojemail@domena.pl</a></p>
+        </div>
+        <div>
+          <h3>Instagram</h3>
+          <p><a id="instaLink" href="https://instagram.com/twoj_profil" target="_blank" rel="noopener">instagram.com/twoj_profil</a></p>
+        </div>
+        <div>
+          <h3>Szybkie zamówienie</h3>
+          <form id="orderForm">
+            <input name="name" placeholder="Imię" required />
+            <input name="email" type="email" placeholder="Email" required />
+            <select name="itemType">
+              <option value="zawieszka">Zawieszka</option>
+              <option value="pierscionek">Pierścionek</option>
+              <option value="brelok">Brelok</option>
+            </select>
+            <textarea name="notes" placeholder="Opis: futerko/włosy/prochy, dodatkowe uwagi"></textarea>
+            <button type="submit" class="btn">Wyślij zamówienie</button>
+            <p class="small">Formularz generuje maila z treścią zamówienia (mailto). Zmień adres w pliku HTML/JS.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© <span id="year"></span> Twoja Marka • Ręcznie robione pamiątki</p>
+    </div>
+  </footer>
+
+  <!-- MODAL ZAMÓWIENIA / PERSONALIZACJI -->
+  <div id="orderModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <button id="closeModal" class="close">✕</button>
+      <h3 id="modalTitle">Szybkie zamówienie</h3>
+      <div id="modalBody"></div>
+      <div class="modal-actions">
+        <button id="copyOrder" class="btn">Skopiuj zamówienie</button>
+        <button id="mailOrder" class="btn ghost">Wyślij mailem</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL DO EDYCJI KWIATÓW (admin, zapis w localStorage) -->
+  <div id="adminPanel" class="admin-panel hidden">
+    <div class="wrap">
+      <h3>Panel: Rodzaje kwiatów sztucznych</h3>
+      <p class="small">Dodaj / usuń pozycje, które natychmiast będą dostępne klientom. Zapisane lokalnie w przeglądarce.</p>
+      <div class="admin-form">
+        <input id="newFlower" placeholder="Nazwa kwiatuszka (np. Różyczki pastelowe)" />
+        <button id="addFlower" class="btn small">Dodaj</button>
+      </div>
+      <ul id="flowersList" class="flowers-list"></ul>
+      <button id="closeAdmin" class="btn ghost small">Zamknij panel</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
